@@ -1,4 +1,4 @@
-# semanticscopes README
+# semanticscopes
 
 Use specialized comments to improve workflow by separating code to logical blocks
 
