@@ -1,7 +1,8 @@
 {
 	"name": "semanticscopes",
 	"displayName": "SemanticScopes",
-	"description": "",
+	"icon": "https://github.com/LeRedditBro/semanticscopes/blob/main/images/semanticscopes.png",
+	"description": "separate code to logical blocks",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.68.0"
