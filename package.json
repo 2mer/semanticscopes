@@ -2,6 +2,10 @@
 	"name": "semanticscopes",
 	"displayName": "SemanticScopes",
 	"icon": "https://github.com/LeRedditBro/semanticscopes/blob/main/images/semanticscopes.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/LeRedditBro/semanticscopes"
+	},
 	"description": "separate code to logical blocks",
 	"version": "0.0.1",
 	"engines": {
