@@ -10,7 +10,7 @@ and block based workflow, blocks can be collapsed (NYI), jumped to, or even swit
 
 Highlighting regions of code based on comments
 
-![screenshot 1](https://github.com/LeRedditBro/semanticscopes/blob/main/images/screenshot_1.png)
+![screenshot 1](images/screenshot_1.png)
 
 ## Extension Settings
 

@@ -1,7 +1,8 @@
 {
 	"name": "semanticscopes",
 	"displayName": "SemanticScopes",
-	"icon": "https://github.com/LeRedditBro/semanticscopes/blob/main/images/semanticscopes.png",
+	"icon": "images/semanticscopes.png",
+	"publisher": "Tomer-Atar",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/LeRedditBro/semanticscopes"

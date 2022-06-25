@@ -54,7 +54,7 @@ export default class CodeblockDecoration extends BlockDecorationManager {
 				this.lineDecorations.push(midDecoration);
 			}
 
-			// title text
+			// @[ title text ]
 			const titleDecoration = decorationGenerators.title(blockDecoration);
 
 			const titleIndex = blockDecoration.lines[0].indexOf(
@@ -74,8 +74,9 @@ export default class CodeblockDecoration extends BlockDecorationManager {
 				),
 			]);
 			this.lineDecorations.push(titleDecoration);
+			// [ title text ]@
 
-			// title hide
+			// @[ title hide ]
 			const titleHideDecoration =
 				decorationGenerators.titleHide(blockDecoration);
 
@@ -121,6 +122,7 @@ export default class CodeblockDecoration extends BlockDecorationManager {
 				),
 			]);
 			this.lineDecorations.push(titleHideDecoration);
+			// [ title hide ]@
 		});
 	}
 }
