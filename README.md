@@ -4,7 +4,7 @@ Use specialized comments to improve workflow by separating code to logical block
 
 motivation:
 have visual anchors for areas of code, to improve organization
-and block based workflow, blocks can be collapsed (NYI), jumped to, or even switched around (NYI)
+and block based workflow, blocks can be folded, jumped to (NYI), or even switched around (NYI)
 
 ## Features
 
