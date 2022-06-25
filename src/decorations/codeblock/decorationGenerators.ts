@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 import { BlockDecoration } from '../../BlockDecoration/BlockDecoration';
-import getComputedTheme from '../../BlockDecoration/getComputedTheme';
+import getComputedTheme from '../../theme/getComputedTheme';
 
 const decorationGenerators = {
 	start: (blockDecoration: BlockDecoration) => {

@@ -1,6 +1,5 @@
-import * as vscode from 'vscode';
-
-export default {
+// this is the default shipped theme, configuration overrides are merged with this as the base
+const theme = {
 	primary: '#2196f3',
 	background: 'rgba(200,200,255,0.05)',
 	text: 'white',
@@ -10,3 +9,7 @@ export default {
 		text: 'white',
 	},
 };
+
+export type Theme = typeof theme;
+
+export default theme;

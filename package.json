@@ -20,12 +20,115 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "semanticscopes.helloWorld",
-				"title": "Hello World"
+		"configuration": {
+			"title": "SemanticScopes",
+			"properties": {
+				"semanticscopes.theme": {
+					"type": "object",
+					"description": "The default theme to use for scopes",
+					"properties": {
+						"primary": {
+							"type": "string",
+							"description": "The color used for the outline and the background of the title",
+							"default": "#2196f3"
+						},
+						"background": {
+							"type": "string",
+							"description": "The color used for the background of the scope",
+							"default": "rgba(200,200,255,0.05)"
+						},
+						"text": {
+							"type": "string",
+							"description": "The color used for the text color of the title",
+							"default": "white"
+						},
+						"selected": {
+							"type": "object",
+							"description": "The default style override when a scope is active",
+							"properties": {
+								"primary": {
+									"type": "string",
+									"description": "The color used for the outline and the background of the title",
+									"default": "#00b0ff"
+								},
+								"background": {
+									"type": "string",
+									"description": "The color used for the background of the scope",
+									"default": "transparent"
+								},
+								"text": {
+									"type": "string",
+									"description": "The color used for the text color of the title",
+									"default": "white"
+								}
+							}
+						}
+					}
+				},
+				"semanticscopes.overrides": {
+					"type": "array",
+					"description": "An array of theme overrides, these will override the default theme if they match the scope's name",
+					"items": {
+						"type": "object",
+						"description": "The default theme to use for scopes",
+						"properties": {
+							"match": {
+								"type": "object",
+								"description": "The matching method to determine if the scope's theme should be overridden with this theme",
+								"properties": {
+									"target": {
+										"type": "string",
+										"enum": ["name", "firstLine", "allLines"],
+										"default": "name"
+									},
+									"regex": {
+										"type": "string",
+										"description": "The regex used to match with the scope to determine if to override",
+										"default": ""
+									}
+								}
+							},
+							"primary": {
+								"type": "string",
+								"description": "The color used for the outline and the background of the title",
+								"default": "#2196f3"
+							},
+							"background": {
+								"type": "string",
+								"description": "The color used for the background of the scope",
+								"default": "rgba(200,200,255,0.05)"
+							},
+							"text": {
+								"type": "string",
+								"description": "The color used for the text color of the title",
+								"default": "white"
+							},
+							"selected": {
+								"type": "object",
+								"description": "The default style override when a scope is active",
+								"properties": {
+									"primary": {
+										"type": "string",
+										"description": "The color used for the outline and the background of the title",
+										"default": "#00b0ff"
+									},
+									"background": {
+										"type": "string",
+										"description": "The color used for the background of the scope",
+										"default": "transparent"
+									},
+									"text": {
+										"type": "string",
+										"description": "The color used for the text color of the title",
+										"default": "white"
+									}
+								}
+							}
+						}
+					}
+				}
 			}
-		]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
