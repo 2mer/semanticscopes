@@ -20,6 +20,20 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"commands": [
+			{
+				"command": "semanticscopes.toggleCodeblock",
+				"title": "Toggle Codeblock"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "semanticscopes.toggleCodeblock",
+				"key": "ctrl+k b",
+				"mac": "cmd+k b",
+				"when": "editorTextFocus"
+			}
+		],
 		"configuration": {
 			"title": "SemanticScopes",
 			"properties": {

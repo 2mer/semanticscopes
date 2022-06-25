@@ -32,9 +32,12 @@ You can configure a preset of style overrides as well as the default theme in th
 		}
 	},
 
-	"semanticscopes.overrides": {
-		"imports": {
-			// will override styles if the trimmed title is equal to the key
+	"semanticscopes.overrides": [
+		{
+			"match": {
+				"target": "name", // which area of the block to match the regex against, valid: "name" | "firstLine" | "allLines"
+				"regex": "jsx" // regex in string format, remember to escape the string correctly
+			},
 			"primary": "red",
 			"text": "red",
 			"background": "red",
@@ -45,12 +48,17 @@ You can configure a preset of style overrides as well as the default theme in th
 				"background": "purple"
 			}
 		}
-	}
+	]
 }
 ```
+
+## Exposed Commands
+
+Toggle Codeblock - `semanticscopes.toggleCodeblock`
 
 ## Known Issues
 
 -   Some deeply nested blocks may render weird
 -   Selections look weird when the region has background color
 -   the left side of the border is sometimes hidden when inside scopes
+-   toggle codeblock command is finnicky and leaves a bunch of undos in the modification stack
