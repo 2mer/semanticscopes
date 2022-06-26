@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import parseBlockDecorations from './BlockDecoration/parseBlockDecorations';
+import CodeblockTreeItem from './CodeblockTreeview/CodeblockTreeitem';
 
 let codeblockSelections: vscode.Selection[] = [];
 
@@ -21,6 +22,49 @@ export default function handleCommands(context: vscode.ExtensionContext) {
 	registerCommand('semanticscopes.selectCodeblockComments', (textEditor) => {
 		textEditor.selections = codeblockSelections;
 	});
+
+	registerCommand(
+		'semanticscopes.peekTreeItemCodeblock',
+		(textEditor, __, codeblockTreeItem: CodeblockTreeItem) => {
+			const blockDecoration =
+				codeblockTreeItem.blockEntry.blockDecoration;
+
+			return vscode.commands.executeCommand<vscode.Location[]>(
+				'editor.action.peekLocations',
+				textEditor.document.uri,
+				textEditor.selection.start,
+				[
+					new vscode.Location(
+						textEditor.document.uri,
+						new vscode.Position(
+							blockDecoration.startLine,
+							blockDecoration.whitespaceOffset
+						)
+					),
+				],
+				'peek'
+			);
+		}
+	);
+
+	registerCommand(
+		'semanticscopes.gotoCodeblock',
+		(textEditor, __, codeblockTreeItem: CodeblockTreeItem) => {
+			const blockDecoration =
+				codeblockTreeItem.blockEntry.blockDecoration;
+
+			return vscode.commands.executeCommand<vscode.Location[]>(
+				'editor.action.goToLocations',
+				textEditor.document.uri,
+				new vscode.Position(
+					blockDecoration.startLine,
+					blockDecoration.whitespaceOffset
+				),
+				[],
+				'goto'
+			);
+		}
+	);
 
 	registerCommand('semanticscopes.toggleCodeblock', (textEditor, edit) => {
 		const { selections, document: textDocument } = textEditor;

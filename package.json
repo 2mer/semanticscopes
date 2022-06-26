@@ -20,10 +20,40 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"menus": {
+			"view/item/context": [
+				{
+					"when": "focusedView == semanticScopes",
+					"command": "semanticscopes.gotoCodeblock",
+					"group": "navigation"
+				},
+				{
+					"when": "focusedView == semanticScopes",
+					"command": "semanticscopes.peekTreeItemCodeblock",
+					"group": "navigation"
+				}
+			]
+		},
+		"views": {
+			"explorer": [
+				{
+					"id": "semanticScopes",
+					"name": "Semantic Scopes"
+				}
+			]
+		},
 		"commands": [
 			{
 				"command": "semanticscopes.toggleCodeblock",
 				"title": "Toggle Codeblock"
+			},
+			{
+				"command": "semanticscopes.peekTreeItemCodeblock",
+				"title": "Peek Codeblock"
+			},
+			{
+				"command": "semanticscopes.gotoCodeblock",
+				"title": "Goto Codeblock"
 			}
 		],
 		"keybindings": [

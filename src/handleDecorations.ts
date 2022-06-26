@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import DecorationManager from './DecorationManager/DecorationManager';
 import CodeblockDecoration from './decorations/codeblock/CodeblockDecoration';
 
-export default function handleDecorations() {
+export default function handleDecorations(context: vscode.ExtensionContext) {
 	const decorationManager = new DecorationManager();
 
 	const handleVisibleTextEditorsChanged = (
@@ -22,15 +22,24 @@ export default function handleDecorations() {
 	handleVisibleTextEditorsChanged(vscode.window.visibleTextEditors);
 
 	// update decorations whenever editors change (open / close)
-	vscode.window.onDidChangeVisibleTextEditors(
-		handleVisibleTextEditorsChanged
+	context.subscriptions.push(
+		vscode.window.onDidChangeVisibleTextEditors(
+			handleVisibleTextEditorsChanged
+		)
 	);
-	vscode.window.onDidChangeTextEditorSelection((event) => {
-		decorationManager.decorateEditor(event.textEditor);
-	});
+
+	// update decorations when the text editor's selection has changed
+	// used to determine selected blocks state
+	context.subscriptions.push(
+		vscode.window.onDidChangeTextEditorSelection((event) => {
+			decorationManager.decorateEditor(event.textEditor);
+		})
+	);
 
 	// update editors with this text document
-	vscode.workspace.onDidChangeTextDocument((event) => {
-		decorationManager.decorateDocument(event.document);
-	});
+	context.subscriptions.push(
+		vscode.workspace.onDidChangeTextDocument((event) => {
+			decorationManager.decorateDocument(event.document);
+		})
+	);
 }
